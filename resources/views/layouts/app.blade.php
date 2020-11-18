@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,26 +12,53 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     
+
+    <!-- Styles -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+
     <style>
-        body {padding-bottom: 100px;}
-        .level {display: flex; align-items: center;}
-        .flex{flex: 1}
-        .mr-1{margin-right: 1em }
-        [v-cloak] {display: none;}
+        body {
+            padding-bottom: 100px;
+        }
+
+        .level {
+            display: flex;
+            align-items: center;
+        }
+
+        .flex {
+            flex: 1
+        }
+
+        .mr-1 {
+            margin-right: 1em
+        }
+
+        [v-cloak] {
+            display: none;
+        }
+
     </style>
 </head>
+
 <body>
     <div id="app">
         @include('layouts.nav')
-        
+
         @yield('content')
-        
+
         <flash message="{{ session('flash') }}"></flash>
     </div>
-    
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
+    <script>
+        window.App = {!! json_encode([
+            'user' => Auth::user(),
+            'signedIn' => Auth::check()
+        ]) !!};
+        </script>
+        <script src="{{ asset('js/app.js') }}"></script>
 </body>
+
 </html>
