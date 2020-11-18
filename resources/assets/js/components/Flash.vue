@@ -1,7 +1,7 @@
 <template>
-<div class="alert alert-success" role="alert" v-show="show">
-  <strong>Success!</strong> {{ body }}
-</div>
+    <div class="alert alert-success" role="alert" v-show="show">
+        <strong>Success!</strong> {{ body }}
+    </div>
 </template>
 
 <script>
