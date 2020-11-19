@@ -3,7 +3,8 @@
         <div class="navbar-header">
 
             <!-- Collapsed Hamburger -->
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                data-target="#app-navbar-collapse">
                 <span class="sr-only">Toggle Navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -20,34 +21,36 @@
             <!-- Left Side Of Navbar -->
             <ul class="nav navbar-nav">
                 <li class="dropdown">
-                    <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
                         Browse <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><a href="/threads">All Threads</a></li>
-                        
+
                         @if (auth()->check())
-                        
-                        <li><a href="/threads?by={{ auth()->user()->name }}">My Threads</a></li>
+
+                            <li><a href="/threads?by={{ auth()->user()->name }}">My Threads</a></li>
                         @endif
-                        
+
                         <li><a href="/threads?popular=1">Popular Threads</a></li>
-                        
+                        <li><a href="/threads?unanswered=1">Unanswered Threads</a></li>
                     </ul>
-                  </li>
+                </li>
                 <li>
                     <a href="/threads/create">New Thread</a>
                 </li>
                 <li class="dropdown">
-                    <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Channels <span class="caret"></span>
+                    <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        Channels <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      @foreach ($channels as $channel)
-                          <li><a href="/threads/{{ $channel->slug }}">{{ $channel->name }}</a></li>
-                      @endforeach
+                        @foreach ($channels as $channel)
+                            <li><a href="/threads/{{ $channel->slug }}">{{ $channel->name }}</a></li>
+                        @endforeach
                     </ul>
-                  </li>
+                </li>
 
             </ul>
 
@@ -68,13 +71,13 @@
                                 <a href="{{ route('profile', Auth::user()) }}">My Profile</a>
                             </li>
                             <li>
-                                <a href="{{ route('logout') }}"
-                                    onclick="event.preventDefault();
+                                <a href="{{ route('logout') }}" onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();">
                                     Logout
                                 </a>
 
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                    style="display: none;">
                                     {{ csrf_field() }}
                                 </form>
                             </li>
