@@ -14,5 +14,8 @@
     "laravel-mix": "^0.10.0",
     "lodash": "^4.16.2",
     "vue": "^2.0.1"
+  },
+  "dependencies": {
+    "moment": "^2.29.1"
   }
 }
