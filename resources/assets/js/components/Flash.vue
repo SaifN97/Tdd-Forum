@@ -1,5 +1,5 @@
 <template>
-    <div class="alert alert-success" role="alert" v-show="show">
+    <div class="alert alert-success alert-flash" role="alert" v-show="show">
         <strong>Success!</strong> {{ body }}
     </div>
 </template>
@@ -9,20 +9,18 @@
         props: ['message'],
 
     data() {
-    return {
-        body : "",
-        show: false
-    }
-},
+        return {
+            body : '',
+            show: false
+        }
+    },
 
     created(){
         if (this.message){
-            this.flash(this.message)
+            this.flash(this.message);
         }
 
-        window.events.$on('flash', message => {
-            this.flash(message);
-        })
+        window.events.$on('flash', message => this.flash(message));
     },
 
 
@@ -37,10 +35,10 @@
         hide() {
         setTimeout(()=> {
             this.show = false
-        })
+        }, 3000)
         }
     }
-    }
+}
 </script>
 
 
