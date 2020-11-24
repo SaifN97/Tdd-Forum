@@ -17,6 +17,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
 
+
     <style>
         body {
             padding-bottom: 100px;
@@ -40,6 +41,7 @@
         }
 
     </style>
+    @yield('header')
 </head>
 
 <body>
@@ -59,6 +61,7 @@
         ]) !!};
         </script>
         <script src="{{ asset('js/app.js') }}"></script>
+        @yield('scripts')
 </body>
 
 </html>
