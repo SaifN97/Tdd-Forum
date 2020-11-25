@@ -63,8 +63,6 @@ class ReadThreadsTest extends TestCase
     /** @test */
     public function a_user_can_filter_threads_by_popularity()
     {
-        //Given we have three threads
-        //With 2 replies , 3 replies, 0 replies respectively
         $threadWithTwoReplies = create('App\Thread');
         create('App\Reply', ['thread_id' => $threadWithTwoReplies->id], 2);
 
@@ -72,11 +70,9 @@ class ReadThreadsTest extends TestCase
         create('App\Reply', ['thread_id' => $threadWithTreeReplies->id], 3);
 
         $threadWithNoReplies = $this->thread;
-        // When I filter threads by popularity
         $response = $this->getJson('threads?popular=1')->json();
 
-        //Then should be returned from most replies to least
-        $this->assertEquals([3, 2, 0], array_column($response, 'replies_count'));
+        $this->assertEquals([3, 2, 0], array_column($response['data'], 'replies_count'));
     }
 
     /** @test */
@@ -87,7 +83,7 @@ class ReadThreadsTest extends TestCase
 
         $response = $this->getJson('threads?unanswered=1')->json();
 
-        $this->assertCount(1, $response);
+        $this->assertCount(1, $response['data']);
     }
 
 
