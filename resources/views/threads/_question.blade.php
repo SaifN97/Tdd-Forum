@@ -3,7 +3,7 @@
     <div class="panel-heading">
         <div class="level">
 
-            <input class="form-control" type="text" value="{{ $thread->title }}">
+            <input class="form-control" type="text" v-model="form.title">
 
 
         </div>
@@ -11,16 +11,14 @@
 
     <div class="panel-body">
         <div class="form-group">
-            <textarea class="form-control" cols="30" rows="10">
-            {{ $thread->body }}
-            </textarea>
+            <textarea class="form-control" rows="10" v-model="form.body"></textarea>
         </div>
     </div>
 
     <div class="panel-footer">
         <div class="level">
-            <button class="btn btn-primary btn-xs level-item">Update</button>
-            <button class="btn btn-xs" @click="editing = false">Cancel</button>
+            <button class="btn btn-primary btn-xs level-item" @click="update">Update</button>
+            <button class="btn btn-xs" @click="resetForm">Cancel</button>
 
             @can('update', $thread)
 
@@ -45,17 +43,14 @@
                 class="mr-1">
             <span class="flex">
                 <a href="{{ route('profile', $thread->creator) }}">{{ $thread->creator->name }}</a>
-                posted:
-                {{ $thread->title }}
+                posted: <span v-text="title"></span>
             </span>
         </div>
     </div>
 
-    <div class="panel-body">
-        {{ $thread->body }}
-    </div>
+    <div class="panel-body" v-text="body"></div>
 
-    <div class="panel-footer">
+    <div class="panel-footer" v-if="authorize('owns', thread)">
         <button class="btn btn-xs" @click="editing = true">Edit</button>
     </div>
 </div>
