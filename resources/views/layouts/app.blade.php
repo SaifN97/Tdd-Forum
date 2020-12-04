@@ -42,6 +42,10 @@
         .ml-a {
             margin-left: auto
         }
+        .ais-highlight > em {
+            background-color: yellow;
+            font-style: normal;  
+        }
 
         [v-cloak] {
             display: none;
